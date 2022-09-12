@@ -3,8 +3,6 @@ firstname = input("What is ur first name? ")
 # ask a user to enter their first name and store it in a variable
 lastname = input("What is ur last name? ")
 # ask a user to enter their last name and store it in a variable
-
-
 print(firstname + lastname)
 # print their full name
 print(firstname + " " + lastname)
