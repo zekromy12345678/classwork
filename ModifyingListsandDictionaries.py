@@ -7,6 +7,5 @@ techdict = {
 "model": "Civic",
 "year": "2022"
 }
-techdict.update({"make": "ferrari"})
-techdict.update({"model": "Purosangu"})
+techdict.update([("make", "Pagani"), ("model", 'zonda')])
 print(techdict)
