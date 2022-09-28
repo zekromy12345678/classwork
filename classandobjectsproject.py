@@ -13,13 +13,16 @@ class Inventory:
     self.size = size
 
   def printspecs(self):
-    print('You have selected the ' + self.name + " with a price of $" + str(self.price) + ". This computer runs a " + self.cpu + " cpu and a " + self.gpu + " gpu. It has " + self.memory + "of memory and " + self.storage + "of storage. ")
+    print('You have selected the ' + self.name + "\nSpecs:\nCost: $" + str(self.price) + "\nCPU: " + self.cpu 
+    + "\nGPU: " + self.gpu + ' \nMemory: ' + self.memory + "\nSTorage: " + self.storage + "\nResolution: " + 
+    self.res + "\nSize: " + self.size)
 
-pc1= Inventory("","","","","","","","")
+pc1= Inventory("dell", 800, "I7" ,"3080","15gb","100tb","4k","13 inch")
 pc2= Inventory("","","","","","","","")
 pc3= Inventory("","","","","","","","")
 pc4= Inventory("","","","","","","","")
 
+pc1.printspecs()
 # Create Child classes that will represent all models you will include.
 
 # Be sure to have user input and program output.
@@ -28,6 +31,6 @@ pc4= Inventory("","","","","","","","")
 # Create print functions that will print out models with all specs.
 
 #https://www.dell.com/en-us/shop/dell-laptops/xps-17-laptop/spd/xps-17-9720-laptop/ctox17w11p1c4004
-https://www.dell.com/en-us/shop/dell-laptops/inspiron-16-plus/spd/inspiron-16-7620-laptop/smi16w11p1c205
-https://www.dell.com/en-us/shop/dell-laptops/latitude-9520-laptop-or-2-in-1/spd/latitude-15-9520-2-in-1-laptop/ctol952015us?redirectto=SOC&configurationid=5b91d471-a0f9-4450-b06e-81da07df3bfb#techspecs_section
-https://www.dell.com/en-us/shop/dell-laptops/alienware-x17-r2-gaming-laptop/spd/alienware-x17-r2-laptop/wnr2x17cto41s#tech-specs-anchor
+#https://www.dell.com/en-us/shop/dell-laptops/inspiron-16-plus/spd/inspiron-16-7620-laptop/smi16w11p1c205
+#https://www.dell.com/en-us/shop/dell-laptops/latitude-9520-laptop-or-2-in-1/spd/latitude-15-9520-2-in-1-laptop/ctol952015us?redirectto=SOC&configurationid=5b91d471-a0f9-4450-b06e-81da07df3bfb#techspecs_section
+#https://www.dell.com/en-us/shop/dell-laptops/alienware-x17-r2-gaming-laptop/spd/alienware-x17-r2-laptop/wnr2x17cto41s#tech-specs-anchor
