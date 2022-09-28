@@ -13,20 +13,40 @@ class Inventory:
     self.size = size
 
   def printspecs(self):
-    print('You have selected the ' + self.name + "\nSpecs:\nCost: $" + str(self.price) + "\nCPU: " + self.cpu 
+    print('\nYou have selected the ' + self.name + "\n\nSpecs:\nCost: $" + str(self.price) + "\nCPU: " + self.cpu 
     + "\nGPU: " + self.gpu + ' \nMemory: ' + self.memory + "\nSTorage: " + self.storage + "\nResolution: " + 
-    self.res + "\nSize: " + self.size)
-
-pc1= Inventory("dell", 800, "I7" ,"3080","15gb","100tb","4k","13 inch")
-pc2= Inventory("","","","","","","","")
-pc3= Inventory("","","","","","","","")
-pc4= Inventory("","","","","","","","")
-
-pc1.printspecs()
+    self.res + "\nSize: " + self.size + '\n')
+  
 # Create Child classes that will represent all models you will include.
+    
+pc1= Inventory("Dell XPS 17 Laptop", 2649, "Intel i9-12900HK 14 cores 20 threads","NVIDIA GeForce 3060","32 GB","1 TB","1920 x 1200",'17.0"')
+pc2= Inventory("Inspiron 16 Plus Laptop", 2010,"Intel i7-12700H 14 cores 20 threads","NVIDIA GeForce 3060","32 GB","1 TB","3072x1920",'16.0"')
+pc3= Inventory("Dell Latitude 9520 Laptop", 2216,"Intel i7-1185G7 4 cores 8 threads","*integrated graphics*","16 GB","1 TB","1920x 1080",'15.0"')
+pc4= Inventory("Alienware x17 R2 Laptop", 4550, "Intel i9-12900HK 14 cores 20 threads","NVIDIA GeForce 3080 Ti","64 GB","2 TB","1920x1080",'17.3"')
 
 # Be sure to have user input and program output.
 # Also be sure to have iteration taking place in your code
+i=0
+while i==0:
+  option = input('Welcome to Double Daniels computer shop. We have 4 computer models in stock which would you like to see? 1-4 ')
+  if option == "1":
+    pc1.printspecs()
+  elif option == "2":
+    pc2.printspecs()
+  elif option == "3":
+    pc3.printspecs()
+  elif option == "4":
+    pc4.printspecs()
+  else:
+    print('Please enter an integer 1-4.')
+  anothaone = input('Would you like to see the specs of another model? YES or NO?\n')
+  if anothaone.lower() == "yes":
+    print('\n')
+    continue
+  else:
+    i = 1
+    print('\nThank you for visiting have a great day!')
+
 
 # Create print functions that will print out models with all specs.
 
