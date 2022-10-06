@@ -28,7 +28,7 @@ pc4= Inventory("Alienware x17 R2 Laptop", 4550, "Intel i9-12900HK 14 cores 20 th
 # Also be sure to have iteration taking place in your code
 i=0
 while i==0:
-  option = input('Welcome to Double Daniels computer shop. We have 4 computer models in stock which would you like to see? 1-4 ')
+  option = input('Welcome to Double Daniels computer shop. We have 4 computer models in stock. Which would you like to see? 1-4 ')
   if option == "1":
     pc1.printspecs()
   elif option == "2":
