@@ -1,5 +1,4 @@
 filled = {"u1": 0, 'u2': 0, "u3": 0, "m1": 0, "m2": 0, "m3": 0, "l1": 0, "l2": 0, "l3": 0,}
-i=0
 class tictac:
   def __init__(space, u1, u2, u3, m1, m2, m3, l1, l2, l3):
     space.u1 = u1
@@ -78,53 +77,56 @@ class tictac:
       space.u1 = 'o'
       filled["l3"] += 1
 # define what is victory
-  def checkvic(space):
+  def checkvic(space, i):
     if space.u1 + space.u2 + space.u3 == 'xxx' or 'ooo':
       i = i +1 
       print('Victory!')
-    if space.m1 + space.m2 + space.m3 == 'xxx' or 'ooo':
+    elif space.m1 + space.m2 + space.m3 == 'xxx' or 'ooo':
       i = i +1 
       print('Victory!')
-    if space.l1 + space.l2 + space.l3 == 'xxx' or 'ooo':
+    elif space.l1 + space.l2 + space.l3 == 'xxx' or 'ooo':
       i = i +1 
       print('Victory!')
-    if space.u1 + space.m1 + space.l1 == 'xxx' or 'ooo':
+    elif space.u1 + space.m1 + space.l1 == 'xxx' or 'ooo':
       i = i +1
       print('Victory!')
-    if space.u2 + space.m2 + space.l2 == 'xxx' or 'ooo':
+    elif space.u2 + space.m2 + space.l2 == 'xxx' or 'ooo':
       i = i +1 
       print('Victory!')
-    if space.u3 + space.m3 + space.l3 == 'xxx' or 'ooo':
+    elif space.u3 + space.m3 + space.l3 == 'xxx' or 'ooo':
       i = i +1 
       print('Victory!')
-    if space.u1 + space.m2 + space.l3 == 'xxx' or 'ooo':
+    elif space.u1 + space.m2 + space.l3 == 'xxx' or 'ooo':
       i = i +1 
       print('Victory!')
-    if space.u3 + space.m2 + space.l1 == 'xxx' or 'ooo':
+    elif space.u3 + space.m2 + space.l1 == 'xxx' or 'ooo':
       i = i +1 
       print('Victory!')
     else:
       pass
+    return i
 # define what a draw is
-  def checkdraw(space):
+  def checkdraw(space ,i):
     if filled["u1"] + filled["u2"] + filled["u3"] + filled["m1"] + filled["m2"] +filled["m3"] + filled["l1"] + filled["l2"] + filled["l3"] == 9:
       i = i + 1
       print('IT''s a draw!')
     else:
       pass
+    return i
 # Create a Loop for iteration
 
 pos = tictac(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ') 
+i=0
 while i == 0:
   tictac.printboard(pos)
   tictac.askuser1(pos)
-  tictac.checkvic(pos)
-  tictac.checkdraw(pos)
+  i = tictac.checkvic(pos, i)
+  i = tictac.checkdraw(pos, i)
   if i==0:
     tictac.printboard(pos)
     tictac.askuser2(pos)
-    tictac.checkvic(pos)
-    tictac.checkdraw(pos)
+    i = tictac.checkvic(pos, i)
+    i = tictac.checkdraw(pos, i)
     if i == 1:
       break
       print('Game over! Thanks for playing!!')
