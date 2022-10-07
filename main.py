@@ -48,58 +48,59 @@ class tictac:
       print('wrong')
       
   def askuser2(space):
-    placement = input("player 1 where would you like to place you x? u1, u2, u3, m1, m2, m3, l1, l2 , l3. ")
+    placement = input("player 2 where would you like to place you o? u1, u2, u3, m1, m2, m3, l1, l2 , l3. ")
+    if filled[placement] == 0:
     if placement == 'u1':
       space.u1 = 'o'
       filled["u1"] += 1
     elif placement == 'u2':
-      space.u1 = 'o'
+      space.u2 = 'o'
       filled["u2"] += 1
     elif placement == 'u3':
-      space.u1 = 'o'
+      space.u3 = 'o'
       filled["u3"] += 1
     elif placement == 'm1':
-      space.u1 = 'o'
+      space.m1 = 'o'
       filled["m1"] += 1
     elif placement == 'm2':
-      space.u1 = 'o'
+      space.m2 = 'o'
       filled["m2"] += 1
     elif placement == 'm3':
-      space.u1 = 'o'
+      space.m3 = 'o'
       filled["m3"] += 1
     elif placement == 'l1':
-      space.u1 = 'o'
+      space.l1 = 'o'
       filled["l1"] += 1
     elif placement == 'l2':
-      space.u1 = 'o'
+      space.l2 = 'o'
       filled["l2"] += 1
     elif placement == 'l3':
-      space.u1 = 'o'
+      space.l3 = 'o'
       filled["l3"] += 1
 # define what is victory
   def checkvic(space, i):
-    if space.u1 + space.u2 + space.u3 == 'xxx' or 'ooo':
+    if space.u1 + space.u2 + space.u3 == 'xxx' or space.u1 + space.u2 + space.u3 == 'ooo':
       i = i +1 
       print('Victory!')
-    elif space.m1 + space.m2 + space.m3 == 'xxx' or 'ooo':
+    elif space.m1 + space.m2 + space.m3 == 'xxx' or space.m1 + space.m2 + space.m3 == 'ooo':
       i = i +1 
       print('Victory!')
-    elif space.l1 + space.l2 + space.l3 == 'xxx' or 'ooo':
+    elif space.l1 + space.l2 + space.l3 == 'xxx' or space.l1 + space.l2 + space.l3 == 'ooo':
       i = i +1 
       print('Victory!')
-    elif space.u1 + space.m1 + space.l1 == 'xxx' or 'ooo':
+    elif space.u1 + space.m1 + space.l1 == 'xxx' or space.u1 + space.m1 + space.l1 == 'ooo':
       i = i +1
       print('Victory!')
-    elif space.u2 + space.m2 + space.l2 == 'xxx' or 'ooo':
+    elif space.u2 + space.m2 + space.l2 == 'xxx' or space.u2 + space.m2 + space.l2 == 'ooo':
       i = i +1 
       print('Victory!')
-    elif space.u3 + space.m3 + space.l3 == 'xxx' or 'ooo':
+    elif space.u3 + space.m3 + space.l3 == 'xxx' or space.u3 + space.m3 + space.l3 == 'ooo':
       i = i +1 
       print('Victory!')
-    elif space.u1 + space.m2 + space.l3 == 'xxx' or 'ooo':
+    elif space.u1 + space.m2 + space.l3 == 'xxx' or space.u1 + space.m2 + space.l3 == 'ooo':
       i = i +1 
       print('Victory!')
-    elif space.u3 + space.m2 + space.l1 == 'xxx' or 'ooo':
+    elif space.u3 + space.m2 + space.l1 == 'xxx' or space.u3 + space.m2 + space.l1 == 'ooo':
       i = i +1 
       print('Victory!')
     else:
@@ -115,7 +116,7 @@ class tictac:
     return i
 # Create a Loop for iteration
 
-pos = tictac(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ') 
+pos = tictac(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ')
 i=0
 while i == 0:
   tictac.printboard(pos)
@@ -128,17 +129,20 @@ while i == 0:
     i = tictac.checkvic(pos, i)
     i = tictac.checkdraw(pos, i)
     if i == 1:
-      break
       print('Game over! Thanks for playing!!')
       keeplay = input('Would you like to play again? y/n')
       if keeplay == 'y':
-        pass
+        pos = tictac(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ')
+        filled = {"u1": 0, 'u2': 0, "u3": 0, "m1": 0, "m2": 0, "m3": 0, "l1": 0, "l2": 0, "l3": 0,}
+        i = 0
     else:
       continue
   elif i == 1:
-    break
     print('Game over! Thanks for playing!!')
     keeplay = input('Would you like to play again? y/n')
     if keeplay == 'y':
-      pass
-    
+      pos = tictac(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ')
+      filled = {"u1": 0, 'u2': 0, "u3": 0, "m1": 0, "m2": 0, "m3": 0, "l1": 0, "l2": 0, "l3": 0,}
+      i=0
+    else:
+      continue
