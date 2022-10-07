@@ -50,33 +50,35 @@ class tictac:
   def askuser2(space):
     placement = input("player 2 where would you like to place you o? u1, u2, u3, m1, m2, m3, l1, l2 , l3. ")
     if filled[placement] == 0:
-    if placement == 'u1':
-      space.u1 = 'o'
-      filled["u1"] += 1
-    elif placement == 'u2':
-      space.u2 = 'o'
-      filled["u2"] += 1
-    elif placement == 'u3':
-      space.u3 = 'o'
-      filled["u3"] += 1
-    elif placement == 'm1':
-      space.m1 = 'o'
-      filled["m1"] += 1
-    elif placement == 'm2':
-      space.m2 = 'o'
-      filled["m2"] += 1
-    elif placement == 'm3':
-      space.m3 = 'o'
-      filled["m3"] += 1
-    elif placement == 'l1':
-      space.l1 = 'o'
-      filled["l1"] += 1
-    elif placement == 'l2':
-      space.l2 = 'o'
-      filled["l2"] += 1
-    elif placement == 'l3':
-      space.l3 = 'o'
-      filled["l3"] += 1
+      if placement == 'u1':
+        space.u1 = 'o'
+        filled["u1"] += 1
+      elif placement == 'u2':
+        space.u2 = 'o'
+        filled["u2"] += 1
+      elif placement == 'u3':
+        space.u3 = 'o'
+        filled["u3"] += 1
+      elif placement == 'm1':
+        space.m1 = 'o'
+        filled["m1"] += 1
+      elif placement == 'm2':
+        space.m2 = 'o'
+        filled["m2"] += 1
+      elif placement == 'm3':
+        space.m3 = 'o'
+        filled["m3"] += 1
+      elif placement == 'l1':
+        space.l1 = 'o'
+        filled["l1"] += 1
+      elif placement == 'l2':
+        space.l2 = 'o'
+        filled["l2"] += 1
+      elif placement == 'l3':
+        space.l3 = 'o'
+        filled["l3"] += 1
+    else:
+      print('wrong')
 # define what is victory
   def checkvic(space, i):
     if space.u1 + space.u2 + space.u3 == 'xxx' or space.u1 + space.u2 + space.u3 == 'ooo':
