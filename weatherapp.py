@@ -3,11 +3,15 @@ import json
 from PIL import Image, ImageFont, ImageDraw
 from datetime import date
 
-api_key = "59d0def3cb08927692cbc6416900eab4"
+api_key = "8e2972b7e4af80e839b62cb18d41f8ed"
 position = [300, 430, 555, 690, 825]
 
 #List of cities
 us_list = ["New York", "Chicago", "San Francisco", "Los Angeles", "San Diego"]
+azer_list = ["Ganja", 'Baku', 'Sheki', 'Nakhchivan', 'Sumqayit']
+uk_list = ['London', "Bristol", "Liverpool", 'Manchester', 'Oxford']
+uae_list = ["Dubai", "Abu Dhabi", 'Sharjah', 'Ajman', "Ras al-Khaimah"]
+saudi_list = ["Riyadh", "Jeddah", 'Mecca', 'Medina', 'Al Khobar']
 
 def countryfunc(us_list, country):
     for cities in us_list:
@@ -67,4 +71,14 @@ def countryfunc(us_list, country):
         index += 1
     image.save(country + "cities_pd5.png")
 
-countryfunc([us_list], "us")
+citychoice = input('Which countrys weather information would you like to see? (US, Azerbaijan, UK, UAE, Saudi) ').lower()
+if citychoice == "us" or citychoice == "united states":
+    countryfunc([us_list], "USA")
+elif citychoice == "azerbaijan" or citychoice == 'azeri':
+    countryfunc([azer_list], "Azerbaijan")
+elif citychoice == "uk" or citychoice == "united kingdom":
+    countryfunc([uk_list], "UK")
+elif citychoice == 'uae' or citychoice == "united arab emirates":
+    countryfunc([uae_list], "UAE")
+elif citychoice == 'saudi' or citychoice == 'saudia arabia':
+    countryfunc([saudi_list], "Saudi")
