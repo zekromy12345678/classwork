@@ -6,7 +6,7 @@ from tkinter import BOTH, IntVar, DISABLED, filedialog
 root = tkinter.Tk()
 root.title('Color Theme Maker')
 root.iconbitmap('color_wheel.ico')
-root.geometry('450x500')
+root.geometry('450x600')
 root.resizable(0, 0)
 
 
@@ -158,6 +158,9 @@ blue_button = tkinter.Button(input_frame, text="Blue", command=lambda: set_color
 yellow_button = tkinter.Button(input_frame, text="Yellow", command=lambda: set_color(255, 255, 0))
 cyan_button = tkinter.Button(input_frame, text="Cyan", command=lambda: set_color(0, 255, 255))
 magenta_button = tkinter.Button(input_frame, text="Magenta", command=lambda: set_color(255, 0, 255))
+white_button = tkinter.Button(input_frame, text="White", command=lambda: set_color(255, 255, 255))
+black_button = tkinter.Button(input_frame, text="Black", command=lambda: set_color(0, 0, 0))
+grey_button = tkinter.Button(input_frame, text="Grey", command=lambda: set_color(128, 128, 128))
 
 # Create utility buttons
 store_button = tkinter.Button(input_frame, text="Store Color", command=store_color)
@@ -177,9 +180,12 @@ blue_button.grid(row=2, column=2, padx=1, pady=1, ipadx=18)
 yellow_button.grid(row=3, column=0, padx=1, pady=1, sticky="WE")
 cyan_button.grid(row=3, column=1, padx=1, pady=1, sticky="WE")
 magenta_button.grid(row=3, column=2, padx=1, pady=1, sticky="WE")
-store_button.grid(row=4, column=0, columnspan=3, padx=1, pady=1, sticky="WE")
-save_button.grid(row=4, column=3, padx=1, pady=1, sticky="WE")
-quit_button.grid(row=4, column=4, padx=1, pady=1, sticky="WE")
+white_button.grid(row=4, column=0, padx=1, pady=1, sticky="WE")
+black_button.grid(row=4, column=1, padx=1, pady=1, sticky="WE")
+grey_button.grid(row=4, column=2, padx=1, pady=1, sticky="WE")
+store_button.grid(row=5, column=0, columnspan=3, padx=1, pady=1, sticky="WE")
+save_button.grid(row=5, column=3, padx=1, pady=1, sticky="WE")
+quit_button.grid(row=5, column=4, padx=1, pady=1, sticky="WE")
 
 # Create the color box and color labels
 color_box = tkinter.Label(input_frame, bg='black', height=6, width=15)
@@ -197,7 +203,7 @@ stored_colors = {}
 stored_color = IntVar()
 
 # Create radio buttons to select stored colors and populate each row with placeholder values
-for i in range(6):
+for i in range(9):
     radio = tkinter.Radiobutton(output_frame, variable=stored_color, value=i)
     radio.grid(row=i, column=0, sticky="W")
 
