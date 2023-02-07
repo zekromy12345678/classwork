@@ -23,10 +23,6 @@ GREEN = (0, 255, 0)
 DARKGREEN = (10, 50, 10)
 BLACK = (0, 0, 0)
 
-#See all available fonts
-fonts = pygame.font.get_fonts()
-for font in fonts:
-    print(font)
 
 #Define fonts
 system_font = pygame.font.SysFont("calibri", 64)
@@ -40,6 +36,12 @@ system_text_rect.center = (window_width//2, window_height//8)
 custom_text = custom_font.render("Move the dragon soon!", True, GREEN)
 custom_text_rect = custom_text.get_rect()
 custom_text_rect.center = (window_width//2, window_height//1.5)
+
+#Load Sound Effects
+sound_1 = pygame.mixer.Sound("sound_1.wav")
+sound_2 = pygame.mixer.Sound("sound_2.wav")
+
+
 
 #The main game loop
 running = True
@@ -57,6 +59,25 @@ while running:
     display_surface.blit(custom_text, custom_text_rect)
 
     pygame.draw.line(display_surface, (255, 255, 255), (0, 75), (window_width, 75), 4)
+
+    sound_1.play()
+    pygame.time.delay(2000)
+    sound_2.play()
+    pygame.time.delay(2000)
+
+    #Change the volume of a sound effect
+    sound_2.set_volume(.1)
+    sound_2.play()
+
+    #load background music
+    pygame.mixer.music.load("music.wav")
+
+    #Play and stop the music
+    pygame.mixer.music.play(-1, 0.0)
+    pygame.time.delay(1000)
+    sound_2.play()
+    pygame.time.delay(5000)
+    pygame.mixer.music.stop()
 
     #Update the display
     pygame.display.update()
