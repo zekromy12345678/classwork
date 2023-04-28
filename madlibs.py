@@ -22,25 +22,35 @@ def count_variables(chosenpara):
                 variable_counts[variable] = 1
     return variable_counts
 
-#function that gets input
-def askvariables(chosenpara):
-    for var, count in variable_counts.items():
-        response = input(f"Enter a {var}: ")
-        chosenpara = chosenpara.replace(f"<{var}>", response)
+#function that gets input and replaces the place holders
+def askvariablesnreplace(chosenpara):
+    c = 0
+    for x in variable_counts.keys():
+        j = variable_counts[x]
+        while c < j:
+            response = input(f"Enter a {x}: ")
+            chosenpara = chosenpara.replace(f"<{x}>", response , 1)
+            c = c+1
+        c = 0
     return chosenpara
 
-#function that takes input and replaces the variables in the string
-"""def replacestrings():
-    importparagraphs()
-    chosenpara = paragraphs[random.randint(0,len(paragraphs)-1)]
-    count_variables(chosenpara)
-    print(askvariables(chosenpara))"""
-
+#main game loop
 importparagraphs()
-chosenpara = paragraphs[random.randint(0,5)]
-count_variables(chosenpara)
-print(chosenpara)
-print(variable_counts)
-askvariables(chosenpara)
-"""replacestrings()"""
-print(chosenpara)
+start = input("You have started the Madlibs Ganme! Enter any key to start: ")
+z = 0
+while z == 0: 
+    if len(start) > 0:
+        chosenpara = paragraphs[random.randint(0,5)]
+        count_variables(chosenpara)
+        chosenpara = askvariablesnreplace(chosenpara)
+        print(f"/n{chosenpara}")
+        again = input("Would you like to play again? y/n: ")
+        if again[0].lower() == "y":
+            z = 0
+            continue
+        else:
+            print("Thanks for playing!")
+            z = 1
+    elif len(start) == 0:
+        print("Pretty please press a button next time!!!")
+        quit()
