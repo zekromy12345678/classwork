@@ -1,88 +1,154 @@
-import pygame
-import random
+import sys
+def display(personality_type):
+    print(f"Your personality type is -> {personality_type}")
+def run():
+    questions: list = [
+        """
+Question 1:
+a.expend energy, enjoy groups or
+b.conserve energy, enjoy one-on-one
+""",
+        """
+Question 2:
+a.more outgoing, think out loud or
+b.more reserved, think to yourself
+""",
+        """
+Question 3:
+a.seek many tasks, public activities, interaction with others
+b.seek private, solitary activities with quiet to concentrate
+""",
+        """
+Question 4:
+a.external, communicative, express yourself or
+b.internal, reticent, keep to yourself
+""",
+        """
+Question 5:
+a.active, initiate or
+b.reflective, deliberate
+""",
+        """
+Question 6:
+a.interpret literally or
+b.look for meaning and possibilities
+""",
+        """
+Question 7:
+a.practical, realistic, experiential or
+b.imaginative, innovative, theoretical
+""",
+        """
+Question 8:
+a.standard, usual, conventional or
+b.different, novel, unique
+""",
+        """
+Question 9:
+a.focus on here-and-now or
+b.look to the future, global perspective, “big picture”
+""",
+        """
+Question 10:
+a.facts, things, “what is” or
+b.ideas, dreams, “what could be,” philosophical
+""",
+        """
+Question 11:
+a.logical, thinking, questioning or
+b.empathetic, feeling, accommodating
+""",
+        """
+Question 12:
+a. candid, straight forward, frank or
+b. tactful, kind, encouraging
+""",
+        """
+Question 13:
+a.firm, tend to criticize, hold the line or
+b.gentle, tend to appreciate, conciliate
+""",
+        """
+Question 14:
+a.tough-minded, just or
+b.tender-hearted, merciful
+""",
+        """
+Question 15:
+a.matter of fact, issue-oriented or
+b.sensitive, people-oriented, compassionate
+""",
+        """
+Question 16:
+a. organized, orderly or
+b. flexible, adaptable
+""",
+        """
+Question 17:
+a. plan, schedule or
+b. unplanned, spontaneous
+""",
+        """
+Question 18:
+a.regulated, structured or
+b.easygoing, “live” and “let live”
+""",
+        """
+Question 19:
+a.preparation, plan ahead or
+b.go with the flow, adapt as you go
+""",
+        """
+Question 20:
+a.control, govern or
+b.latitude, freedom
+"""]
 
-# Initialize Pygame
-pygame.init()
+    count_of_a: int = 0
+    count_of_b: int = 0
+    personality_dichotomy: str = ''
+    count = 0
 
-# Define colors
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-BLUE = (0, 0, 255)
-
-# Set the width and height of the screen
-WIDTH = 800
-HEIGHT = 600
-
-# Set the font and font size
-FONT = pygame.font.SysFont(None, 32)
-
-# Load the paragraphs from the file into a list
-paragraphs = []
-with open('madlibs.txt', 'rt') as file:
-    for x in file:
-        paragraphs.append(x.strip())
-
-# Define functions for counting variables and asking for input
-def count_variables(chosenpara):
-    variable_counts = {}
-    for word in chosenpara.split():
-        if '<' in word and '>' in word:
-            index1 = word.index("<") +1
-            index2 = word.index(">")
-            variable = word[index1:index2]
-            if variable in variable_counts:
-                variable_counts[variable] += 1
+    for question in questions:
+        answer = ''
+        while not (answer == 'A' or answer == 'B'):
+            count_of_a = 0
+            count_of_b = 0
+            try:
+                answer = input(question).upper()
+                if not (answer == 'A' or answer == 'B'):
+                    raise ValueError("Invalid input")
+            except ValueError as error:
+                print(error)
             else:
-                variable_counts[variable] = 1
-    return variable_counts
+                if answer == 'A':
+                    count_of_a = count_of_a + 1
+                if answer == 'B':
+                    count_of_b = count_of_b + 1
+                count = count + 1
 
-def askvariablesnreplace(chosenpara, variable_counts):
-    c = 0
-    for x in variable_counts.keys():
-        j = variable_counts[x]
-        while c < j:
-            response = input(f"Enter a {x}: ")
-            chosenpara = chosenpara.replace(f"<{x}>", response , 1)
-            c = c+1
-        c = 0
-    return chosenpara
+        if count == 5:
+            if count_of_a > count_of_b:
+                personality_dichotomy = personality_dichotomy + 'E '
+            else:
+                personality_dichotomy = personality_dichotomy + 'I '
+        else:
+            if count == 10:
+                if count_of_a > count_of_b:
+                    personality_dichotomy = personality_dichotomy + 'S '
+                else:
+                    personality_dichotomy = personality_dichotomy + 'N '
+            else:
+                if count == 15:
+                    if count_of_a > count_of_b:
+                        personality_dichotomy = personality_dichotomy + 'T '
+                    else:
+                        personality_dichotomy = personality_dichotomy + 'F '
+                else:
+                    if count == 20:
+                        if count_of_a > count_of_b:
+                            personality_dichotomy = personality_dichotomy + 'J '
+                        else:
+                            personality_dichotomy = personality_dichotomy + 'P '
 
-# Set up the game window
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Mad Libs")
-
-# Set up the game loop
-done = False
-while not done:
-    # Set the background color
-    screen.fill(WHITE)
-
-    # Choose a random paragraph and count its variables
-    chosenpara = paragraphs[random.randint(0,5)]
-    variable_counts = count_variables(chosenpara)
-
-    # Ask for input and replace the placeholders in the paragraph
-    completed_para = askvariablesnreplace(chosenpara, variable_counts)
-
-    # Render the completed paragraph on the screen
-    text = FONT.render(completed_para, True, BLACK)
-    text_rect = text.get_rect(center=(WIDTH/2, HEIGHT/2))
-    screen.blit(text, text_rect)
-
-    # Render the prompt to play again on the screen
-    prompt = FONT.render("Press SPACE to play again", True, BLUE)
-    prompt_rect = prompt.get_rect(center=(WIDTH/2, HEIGHT-50))
-    screen.blit(prompt, prompt_rect)
-
-    # Update the screen
-    pygame.display.update()
-
-    # Wait for input to play again or quit
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            done = True
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-            pass
-
-# Quit Pygame
-pygame.quit()
+    display(personality_dichotomy)

@@ -2,9 +2,9 @@ import random
 paragraphs = []
 variable_counts = {}
 
-#imports all paragraphs into a list
+#imports all paragraphs from text file into a list
 def importparagraphs():
-    with open ('madlibs.txt', 'rt') as file:  # Open lorem.txt for reading
+    with open ('madlibs.txt', 'rt') as file:  # Open madlibs.txt for reading
         for x in file:              # For each line, read to a string,
             paragraphs.append(x)    # and print the string.
     return paragraphs
@@ -43,10 +43,11 @@ while z == 0:
         chosenpara = paragraphs[random.randint(0,5)]
         count_variables(chosenpara)
         chosenpara = askvariablesnreplace(chosenpara)
-        print(f"/n{chosenpara}")
+        print("\n" + chosenpara)
         again = input("Would you like to play again? y/n: ")
         if again[0].lower() == "y":
             z = 0
+            variable_counts.clear()
             continue
         else:
             print("Thanks for playing!")
